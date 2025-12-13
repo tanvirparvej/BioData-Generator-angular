@@ -1,0 +1,281 @@
+<div class="container">
+  <!-- Form Panel -->
+  <div class="form-panel">
+    <div class="panel-header">
+      <h2>📝 বায়োডাটা তৈরি করুন</h2>
+      <p>Fill in the details to create your biodata</p>
+    </div>
+
+    <form>
+      <!-- Theme Colors -->
+      <div class="form-section">
+        <div class="section-title">🎨 থিম কালার (Theme Colors)</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>প্রাথমিক রঙ (Primary Color)</label>
+            <input type="color" [(ngModel)]="primaryColor" name="primaryColor" (ngModelChange)="updateColors()">
+          </div>
+          <div class="form-group">
+            <label>দ্বিতীয় রঙ (Secondary Color)</label>
+            <input type="color" [(ngModel)]="secondaryColor" name="secondaryColor" (ngModelChange)="updateColors()">
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Upload -->
+      <div class="form-section">
+        <div class="section-title">📷 ছবি (Photo)</div>
+        <div class="form-group">
+          <label>ছবি আপলোড করুন (Upload Photo)</label>
+          <input type="file" (change)="onPhotoUpload($event)" accept="image/*" style="padding: 8px;">
+        </div>
+      </div>
+
+      <!-- Personal Information -->
+      <div class="form-section">
+        <div class="section-title">👤 ব্যক্তিগত তথ্য (Personal Information)</div>
+        <div class="form-group">
+          <label>নাম (Name) *</label>
+          <input type="text" [(ngModel)]="biodata.name" name="name" placeholder="আপনার নাম লিখুন">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>জন্ম তারিখ (Date of Birth)</label>
+            <input type="text" [(ngModel)]="biodata.dob" name="dob" placeholder="০৮/০১/১৯৯৮">
+          </div>
+          <div class="form-group">
+            <label>বয়স (Age)</label>
+            <input type="text" [(ngModel)]="biodata.age" name="age" placeholder="২৭ বছর">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>উচ্চতা (Height)</label>
+            <input type="text" [(ngModel)]="biodata.height" name="height" placeholder="৫ ফুট ৭ ইঞ্চি">
+          </div>
+          <div class="form-group">
+            <label>ওজন (Weight)</label>
+            <input type="text" [(ngModel)]="biodata.weight" name="weight" placeholder="৭০ কেজি">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>বর্ণ (Complexion)</label>
+            <input type="text" [(ngModel)]="biodata.complexion" name="complexion" placeholder="ফর্সা">
+          </div>
+          <div class="form-group">
+            <label>রক্তের গ্রুপ (Blood Group)</label>
+            <input type="text" [(ngModel)]="biodata.bloodGroup" name="bloodGroup" placeholder="O+">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>ধর্ম (Religion)</label>
+            <input type="text" [(ngModel)]="biodata.religion" name="religion" placeholder="ইসলাম">
+          </div>
+          <div class="form-group">
+            <label>বর্ণ/সম্প্রদায় (Caste)</label>
+            <input type="text" [(ngModel)]="biodata.caste" name="caste" placeholder="সুন্নী">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>বৈবাহিক অবস্থা (Marital Status)</label>
+          <input type="text" [(ngModel)]="biodata.maritalStatus" name="maritalStatus" placeholder="অবিবাহিত">
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="form-section">
+        <div class="section-title">🎓 শিক্ষাগত যোগ্যতা (Education)</div>
+        <div class="form-group">
+          <label>শিক্ষা (Education Qualification)</label>
+          <textarea [(ngModel)]="biodata.education" name="education" placeholder="ব্যাচেলর অফ বিজনেস অ্যাডমিনিস্ট্রেশন (বিবিএ), ২০২২"></textarea>
+        </div>
+      </div>
+
+      <!-- Occupation -->
+      <div class="form-section">
+        <div class="section-title">💼 পেশা (Occupation)</div>
+        <div class="form-group">
+          <label>পেশার বিবরণ (Occupation Details)</label>
+          <textarea [(ngModel)]="biodata.occupation" name="occupation" placeholder="সিনিয়র ম্যানেজার মার্কেটিং"></textarea>
+        </div>
+        <div class="form-group">
+          <label>মাসিক আয় (Monthly Income)</label>
+          <input type="text" [(ngModel)]="biodata.income" name="income" placeholder="৫০,০০০ টাকা">
+        </div>
+      </div>
+
+      <!-- Family Information -->
+      <div class="form-section">
+        <div class="section-title">🏠 পারিবারিক তথ্য (Family Information)</div>
+        <div class="form-group">
+          <label>পিতার নাম (Father's Name)</label>
+          <input type="text" [(ngModel)]="biodata.fatherName" name="fatherName" placeholder="পিতার নাম">
+        </div>
+        <div class="form-group">
+          <label>পিতার পেশা (Father's Occupation)</label>
+          <input type="text" [(ngModel)]="biodata.fatherOccupation" name="fatherOccupation" placeholder="পিতার পেশা">
+        </div>
+        <div class="form-group">
+          <label>মাতার নাম (Mother's Name)</label>
+          <input type="text" [(ngModel)]="biodata.motherName" name="motherName" placeholder="মাতার নাম">
+        </div>
+        <div class="form-group">
+          <label>মাতার পেশা (Mother's Occupation)</label>
+          <input type="text" [(ngModel)]="biodata.motherOccupation" name="motherOccupation" placeholder="মাতার পেশা">
+        </div>
+        <div class="form-group">
+          <label>ভাই-বোন (Siblings)</label>
+          <input type="text" [(ngModel)]="biodata.siblings" name="siblings" placeholder="১ ভাই, ১ বোন">
+        </div>
+        <div class="form-group">
+          <label>পারিবারিক অবস্থা (Family Status)</label>
+          <input type="text" [(ngModel)]="biodata.familyStatus" name="familyStatus" placeholder="মধ্যবিত্ত">
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="form-section">
+        <div class="section-title">📍 ঠিকানা (Address)</div>
+        <div class="form-group">
+          <label>বর্তমান ঠিকানা (Present Address)</label>
+          <textarea [(ngModel)]="biodata.presentAddress" name="presentAddress" placeholder="বর্তমান ঠিকানা লিখুন"></textarea>
+        </div>
+        <div class="form-group">
+          <label>স্থায়ী ঠিকানা (Permanent Address)</label>
+          <textarea [(ngModel)]="biodata.permanentAddress" name="permanentAddress" placeholder="গ্রাম, থানা, জেলা"></textarea>
+        </div>
+      </div>
+
+      <!-- Hobbies -->
+      <div class="form-section">
+        <div class="section-title">🎯 শখ ও আগ্রহ (Hobbies & Interests)</div>
+        <div class="form-group">
+          <label>শখ (Hobbies)</label>
+          <textarea [(ngModel)]="biodata.hobbies" name="hobbies" placeholder="বই পড়া, ভ্রমণ, খেলাধুলা"></textarea>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="form-section">
+        <div class="section-title">📞 যোগাযোগ (Contact Information)</div>
+        <div class="form-group">
+          <label>মোবাইল নম্বর (Mobile Number)</label>
+          <input type="tel" [(ngModel)]="biodata.mobile" name="mobile" placeholder="০১৭৪৭২৮৬০৬৮">
+        </div>
+        <div class="form-group">
+          <label>ইমেইল (Email)</label>
+          <input type="email" [(ngModel)]="biodata.email" name="email" placeholder="email@example.com">
+        </div>
+      </div>
+
+      <button type="button" class="download-btn" (click)="downloadPDF()">
+        📥 Download as PDF
+      </button>
+    </form>
+  </div>
+
+  <!-- Preview Panel -->
+  <div class="preview-panel" #biodataPreview>
+    <div class="biodata-border" [style.border-color]="primaryColor">
+      <div class="biodata-inner-border" [style.border-color]="secondaryColor">
+        <div class="biodata-header" [style.background]="'linear-gradient(135deg, ' + primaryColor + ' 0%, ' + secondaryColor + ' 100%)'">
+          <h1>জীবনবৃত্তান্ত</h1>
+          <p>Biodata</p>
+        </div>
+
+        <div class="photo-section">
+          <div class="photo-frame" [style.border-color]="primaryColor">
+            <img *ngIf="biodata.photoUrl" [src]="biodata.photoUrl" alt="Profile Photo">
+            <span *ngIf="!biodata.photoUrl" class="photo-placeholder" [style.color]="primaryColor">👤</span>
+          </div>
+        </div>
+
+        <div class="bio-section">
+          <div class="bio-section-title" [style.background]="'linear-gradient(90deg, ' + primaryColor + ' 0%, ' + secondaryColor + ' 100%)'">
+            ব্যক্তিগত তথ্য / Personal Information
+          </div>
+          <table class="info-table">
+            <tr><td [style.color]="primaryColor">নাম / Name</td><td>{{ biodata.name || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">জন্ম তারিখ / Date of Birth</td><td>{{ biodata.dob || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">বয়স / Age</td><td>{{ biodata.age || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">উচ্চতা / Height</td><td>{{ biodata.height || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">ওজন / Weight</td><td>{{ biodata.weight || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">বর্ণ / Complexion</td><td>{{ biodata.complexion || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">রক্তের গ্রুপ / Blood Group</td><td>{{ biodata.bloodGroup || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">ধর্ম / Religion</td><td>{{ biodata.religion || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">বর্ণ / Caste</td><td>{{ biodata.caste || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">বৈবাহিক অবস্থা / Marital Status</td><td>{{ biodata.maritalStatus || '-' }}</td></tr>
+          </table>
+        </div>
+
+        <div class="decorative-line" [style.background]="'linear-gradient(90deg, transparent, ' + secondaryColor + ', transparent)'"></div>
+
+        <div class="bio-section">
+          <div class="bio-section-title" [style.background]="'linear-gradient(90deg, ' + primaryColor + ' 0%, ' + secondaryColor + ' 100%)'">
+            শিক্ষাগত যোগ্যতা / Educational Qualification
+          </div>
+          <table class="info-table">
+            <tr><td [style.color]="primaryColor">শিক্ষা / Education</td><td>{{ biodata.education || '-' }}</td></tr>
+          </table>
+        </div>
+
+        <div class="decorative-line" [style.background]="'linear-gradient(90deg, transparent, ' + secondaryColor + ', transparent)'"></div>
+
+        <div class="bio-section">
+          <div class="bio-section-title" [style.background]="'linear-gradient(90deg, ' + primaryColor + ' 0%, ' + secondaryColor + ' 100%)'">
+            পেশা ও শখ / Occupation & Hobbies
+          </div>
+          <table class="info-table">
+            <tr><td [style.color]="primaryColor">পেশা / Occupation</td><td>{{ biodata.occupation || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">মাসিক আয় / Monthly Income</td><td>{{ biodata.income || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">শখ / Hobbies</td><td>{{ biodata.hobbies || '-' }}</td></tr>
+          </table>
+        </div>
+
+        <div class="decorative-line" [style.background]="'linear-gradient(90deg, transparent, ' + secondaryColor + ', transparent)'"></div>
+
+        <div class="bio-section">
+          <div class="bio-section-title" [style.background]="'linear-gradient(90deg, ' + primaryColor + ' 0%, ' + secondaryColor + ' 100%)'">
+            পারিবারিক তথ্য / Family Information
+          </div>
+          <table class="info-table">
+            <tr><td [style.color]="primaryColor">পিতার নাম / Father's Name</td><td>{{ biodata.fatherName || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">পিতার পেশা / Father's Occupation</td><td>{{ biodata.fatherOccupation || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">মাতার নাম / Mother's Name</td><td>{{ biodata.motherName || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">মাতার পেশা / Mother's Occupation</td><td>{{ biodata.motherOccupation || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">ভাই-বোন / Siblings</td><td>{{ biodata.siblings || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">পারিবারিক অবস্থা / Family Status</td><td>{{ biodata.familyStatus || '-' }}</td></tr>
+          </table>
+        </div>
+
+        <div class="decorative-line" [style.background]="'linear-gradient(90deg, transparent, ' + secondaryColor + ', transparent)'"></div>
+
+        <div class="bio-section">
+          <div class="bio-section-title" [style.background]="'linear-gradient(90deg, ' + primaryColor + ' 0%, ' + secondaryColor + ' 100%)'">
+            ঠিকানা / Address
+          </div>
+          <table class="info-table">
+            <tr><td [style.color]="primaryColor">বর্তমান ঠিকানা / Present</td><td>{{ biodata.presentAddress || '-' }}</td></tr>
+            <tr><td [style.color]="primaryColor">স্থায়ী ঠিকানা / Permanent</td><td>{{ biodata.permanentAddress || '-' }}</td></tr>
+          </table>
+        </div>
+
+        <div class="biodata-footer" [style.border-top-color]="secondaryColor">
+          <h3 [style.color]="primaryColor">যোগাযোগের তথ্য / Contact Information</h3>
+          <div class="contact-box" [style.border-color]="secondaryColor">
+            <div class="contact-item">
+              <span class="contact-icon" [style.color]="primaryColor">📱 Mobile:</span>
+              <span>{{ biodata.mobile || '-' }}</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon" [style.color]="primaryColor">✉️ Email:</span>
+              <span>{{ biodata.email || '-' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Pulls code from your Git repository
                 checkout scm
             }
         }
@@ -18,15 +17,16 @@ pipeline {
         stage('Down Existing Containers') {
             steps {
                 echo 'Stopping running containers...'
-                sh 'docker-compose down --remove-orphans'
+                // Changed from docker-compose to native docker compose
+                sh 'docker compose down --remove-orphans'
             }
         }
 
         stage('Build & Deploy with Docker Compose') {
             steps {
                 echo 'Building and starting the application...'
-                // Builds the image and runs it in detached (-d) mode
-                sh 'docker-compose up --build -d'
+                // Changed from docker-compose to native docker compose
+                sh 'docker compose up --build -d'
             }
         }
 

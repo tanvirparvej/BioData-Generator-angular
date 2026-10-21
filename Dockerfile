@@ -20,7 +20,10 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built Angular app to nginx
-COPY --from=build /app/dist/bio-generator /usr/share/nginx/html
+COPY --from=build /app/dist/bio-generator/browser /usr/share/nginx/html
+
+# FIX: Set correct permissions so the nginx user can read the files
+RUN chmod -R 755 /usr/share/nginx/html && chown -R nginx:nginx /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80

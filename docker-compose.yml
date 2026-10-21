@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biodata-generator-angular
+    ports:
+      - "80:80"
+    restart: always
